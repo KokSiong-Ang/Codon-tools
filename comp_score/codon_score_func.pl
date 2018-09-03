@@ -200,7 +200,7 @@ sub comp_gc3
 			++$GCcount;
 		}
 	}
-	return 100.0 * $GCcount / (($#array+1)/3);
+	return 100.0 * $GCcount / ($#array+1) * 3;
 }
 
 sub comp_exc {
