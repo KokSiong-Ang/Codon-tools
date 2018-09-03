@@ -1,5 +1,8 @@
 #!/usr/bin/env perl
 
+# comp_freq.pl is Perl script for computing codon count, amino acid 
+# count, codon pair count, amino acid pair count, codon frequency 
+# (ICU), and codon context (CC) from a fasta file.
 #
 # For the definition of individual codon usage (ICU) and codon context 
 # (CC), please see: Chung BK, Lee DY, Computational codon optimization 
@@ -9,7 +12,7 @@
 # sequences (A/C/G/T/U) without any ambiguous bases.
 # Computes the codon count, amino acid count, codon pair count, amino 
 # acid pair count, codon frequency (ICU), and codon context (CC).
-# 
+#
 
 use strict;
 use warnings;
