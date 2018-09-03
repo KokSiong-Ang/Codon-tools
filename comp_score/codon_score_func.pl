@@ -195,7 +195,7 @@ sub comp_gc3
 
 	my @array = unpack "(a)*", $seq;
 	my $GCcount = 0;
-	for (my $i=0; $i<=$#array; ++$i) {
+	for (my $i=0; $i<=$#array; $i+=3) {
 		if ($array[$i] eq "G" || $array[$i] eq "C") {
 			++$GCcount;
 		}
