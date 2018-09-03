@@ -1,3 +1,3 @@
-ICU score	CC score	CAI score	Hidden	GC content	Excluseq	Repeat
--0.094568	-0.116477	-0.795765	     6	59.759760	     0	     0
--0.072709	-0.118121	-0.716793	     7	56.156156	     0	     0
+ICU score	CC score	CAI score	Hidden	GC content	GC3 content	Excluseq	CG motif	Repeat
+-0.094568	-0.116477	-0.795765	     6	59.759760	66.666667	     0	    26	     0
+-0.072709	-0.118121	-0.716793	     7	56.156156	59.459459	     0	    22	     0

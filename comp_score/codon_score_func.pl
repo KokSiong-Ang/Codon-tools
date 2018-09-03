@@ -195,12 +195,12 @@ sub comp_gc3
 
 	my @array = unpack "(a)*", $seq;
 	my $GCcount = 0;
-	for (my $i=0; $i<=$#array; $i+=3) {
+	for (my $i=2; $i<=$#array; $i+=3) {
 		if ($array[$i] eq "G" || $array[$i] eq "C") {
 			++$GCcount;
 		}
 	}
-	return 100.0 * $GCcount / ($#array+1) / 3;
+	return 100.0 * $GCcount / (($#array+1)/3);
 }
 
 sub comp_exc {
@@ -219,6 +219,20 @@ sub comp_exc {
 		}
 	}
 	return $score;
+}
+
+sub comp_cg {
+	my $seq = shift;
+
+	my @array = unpack "(a)*", $seq;
+	my $CGcount = 0;
+	for (my $i=0; $i<=$#array; ++$i) {
+		if ($array[$i] eq "C" && $array[$i+1] eq "G") {
+			++$CGcount;
+			++$i;
+		}
+	}
+	return $CGcount;
 }
 
 sub comp_repeat

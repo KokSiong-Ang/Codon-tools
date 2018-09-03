@@ -4,9 +4,9 @@
 # comp_score.pl is a Perl script for computing ICU score, CC score, 
 # and CAI score of sequences with respect to a reference host. It 
 # also computes the GC content, GC content at third nucleotide 
-# position (GC3), hidden stop count, exclusion sequence count, and 
-# consecutive repeats count. The sequences should be supplied in a 
-# fasta file. 
+# position (GC3), hidden stop count, exclusion sequence count, CG 
+# motif count, and consecutive repeats count. The sequences should 
+# be supplied in a fasta file. 
 #
 # For the definition of individual codon usage (ICU) and codon context 
 # (CC), please see: Chung BK, Lee DY, Computational codon optimization 
@@ -26,6 +26,9 @@
 # folder for format)
 # Optional: repeat_numbers.txt for repeat sequence specification (see 
 # file in folder for format)
+#
+# The output is a tab delimited file (scores.txt) with a header for 
+# the columns followed by the computed scores.
 #
 	
 use strict;
@@ -54,7 +57,7 @@ sub read_fasta
 
 	open my $fileh_in, "<".$in_filename or die $!;
 	open my $fileh_out, ">".$out_filename or die $!;
-	printf $fileh_out "ICU score\tCC score\tCAI score\tHidden\tGC content\tExcluseq\tRepeat\n";
+	printf $fileh_out "ICU score\tCC score\tCAI score\tHidden\tGC content\tGC3 content\tExcluseq\tCG motif\tRepeat\n";
 
 	my $line = <$fileh_in>;
 	while ($line) {
@@ -121,11 +124,12 @@ sub process_seq
 	my $gc_content = comp_gc($seq);
 	my $gc3_content = comp_gc3($seq);
 	my $score_exc = comp_exc($seq, $exclu_ref);
+	my $score_cg = comp_cg($seq);
 	my $score_repeat = comp_repeat($seq, $repeat_ref);
 
-	printf $fileh_out "%f\t%f\t%f\t%6d\t%f\t%f\t%6d\t%6d\n", 
+	printf $fileh_out "%f\t%f\t%f\t%6d\t%f\t%f\t%6d\t%6d\t%6d\n", 
 			$score_icu, $score_cc, $score_cai, $score_hidden, $gc_content, $gc3_content, 
-			$score_exc, $score_repeat;
+			$score_exc, $score_cg, $score_repeat;
 }
 
 sub read_trans_table
