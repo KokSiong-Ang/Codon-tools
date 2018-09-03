@@ -5,7 +5,7 @@ comp_freq folder contains a Perl script for computing codon count, amino acid co
 codon frequency (ICU), and codon context (CC) from a fasta file.
 
 comp_score folder contains a Perl script for computing ICU score, CC score, and CAI score of sequences with respect to a reference 
-host. It also compute the GC content, hidden stop count, exclusion sequence count, and consecutive repeats count. The sequences should 
+host. It also computes the GC content, hidden stop count, exclusion sequence count, and consecutive repeats count. The sequences should 
 be supplied in a fasta file. 
 
 For the definition of individual codon usage (ICU) and codon context (CC), please see: Chung BK, Lee DY, Computational codon 
