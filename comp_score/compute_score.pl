@@ -3,9 +3,10 @@
 #
 # comp_score.pl is a Perl script for computing ICU score, CC score, 
 # and CAI score of sequences with respect to a reference host. It 
-# also computes the GC content, hidden stop count, exclusion sequence 
-# count, and consecutive repeats count. The sequences should be 
-# supplied in a fasta file. 
+# also computes the GC content, GC content at third nucleotide 
+# position (GC3), hidden stop count, exclusion sequence count, and 
+# consecutive repeats count. The sequences should be supplied in a 
+# fasta file. 
 #
 # For the definition of individual codon usage (ICU) and codon context 
 # (CC), please see: Chung BK, Lee DY, Computational codon optimization 
@@ -118,11 +119,12 @@ sub process_seq
 	my $score_hidden = comp_hidden($seq, $aa2c_ref);
 
 	my $gc_content = comp_gc($seq);
+	my $gc3_content = comp_gc3($seq);
 	my $score_exc = comp_exc($seq, $exclu_ref);
 	my $score_repeat = comp_repeat($seq, $repeat_ref);
 
-	printf $fileh_out "%f\t%f\t%f\t%6d\t%f\t%6d\t%6d\n", 
-			$score_icu, $score_cc, $score_cai, $score_hidden, $gc_content, 
+	printf $fileh_out "%f\t%f\t%f\t%6d\t%f\t%f\t%6d\t%6d\n", 
+			$score_icu, $score_cc, $score_cai, $score_hidden, $gc_content, $gc3_content, 
 			$score_exc, $score_repeat;
 }
 

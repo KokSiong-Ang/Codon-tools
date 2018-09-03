@@ -189,6 +189,20 @@ sub comp_gc
 	return 100.0 * $GCcount / ($#array+1);
 }
 
+sub comp_gc3
+{
+	my $seq = shift;
+
+	my @array = unpack "(a)*", $seq;
+	my $GCcount = 0;
+	for (my $i=0; $i<=$#array; ++$i) {
+		if ($array[$i] eq "G" || $array[$i] eq "C") {
+			++$GCcount;
+		}
+	}
+	return 100.0 * $GCcount / ($#array+1) / 3;
+}
+
 sub comp_exc {
 	my $seq = shift;
 	my $exclu_ref = shift;
