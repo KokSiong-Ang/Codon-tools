@@ -1,0 +1,7 @@
+#
+# In this file, lines beginning with a # are ignored.
+# This specifies the computing of exlusion sequences. Motifs should be 
+# supplied as nucleotides (A/C/G/T/U) with no ambiguous nucleotides 
+# allowed. Each motif should be separated by a semicolon.
+#
+AGGAGGU;GGAGGG

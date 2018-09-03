@@ -1,0 +1,10 @@
+#
+# In this file, lines beginning with a # are ignored.
+# This specifies the computing of consecutive repeats. For every 
+# specification, a pair of numbers separated by a colon is needed. The 
+# first number is the length of the nucleotide motif, and the second 
+# is the minimum number of consecutive repeats of that motif required to 
+# be counted. More than one pair of numbers may be specified, with each 
+# pair separated by a semicolon.
+#
+4:3;5:3
