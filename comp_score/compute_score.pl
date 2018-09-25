@@ -118,7 +118,7 @@ sub process_seq
 
 	my $score_icu = - comp_icu($c2aa_ref, $icu_ref, $num_ic, $c_counts_ref, $aa_counts_ref);
 	my $score_cc = - comp_cc($c2aa_ref, $cc_ref, $num_cc, $cc_counts_ref, $aap_counts_ref);
-	my $score_cai = - comp_cai($seq, $c2aa_ref, $icu_ref, $most_freq_ic_value_ref);
+	my $score_cai = comp_cai($seq, $c2aa_ref, $icu_ref, $most_freq_ic_value_ref);
 	my $score_hidden = comp_hidden($seq, $aa2c_ref);
 
 	my $gc_content = comp_gc($seq);
