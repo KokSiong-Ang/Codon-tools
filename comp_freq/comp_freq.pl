@@ -120,7 +120,7 @@ sub process_seq
 	}
 	if (length($seq) < 6) {
 		printf "Warning: %s is too short to be considered. Skipping.\n", $header;
-		return;
+		return 1;
 	}
 	my @stops = @{ $aa2c{"*"} };
 	my $rgx = join "|", @stops;
@@ -137,6 +137,11 @@ sub process_seq
 	}
 
 	my @codon_array = unpack "(a3)*", $seq;
+	#modified code 19/4/2020
+	if ($codon_array[0] !~ /^[ACTG]TG$/) {
+		printf "%s does not start with [ACTG]TG. Skipping the sequence.\n", $header;
+		return 1;
+	}
 
 	if (!exists $c2aa{$codon_array[0]}) {
 		++$unknown;
